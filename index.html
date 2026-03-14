@@ -3,56 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Рандомайзер
-    ПРОСЛАВЛЕНИЕ</title>
+
+<title>Рандомайзер ПРОСЛАВЛЕНИЕ</title>
+
 <style>
-body {
+
+body{
+    margin:0;
     font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 30px;
-    background: #f5f3f2;
+    background:#e7efe9;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:40px 20px;
 }
-button {
-    padding: 15px 30px;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    background: #00a550;
-    color: white;
+
+.title-small{
+    font-size:18px;
+    color:#555;
 }
-.result {
-    margin-top: 30px;
-    font-size: 20px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    min-width: 280px;
+
+.title-big{
+    font-size:36px;
+    font-weight:bold;
+    margin-top:5px;
 }
+
+button{
+    margin-top:30px;
+    padding:15px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#00a550;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#008a44;
+}
+
+.cards{
+    width:100%;
+    max-width:420px;
+    margin-top:35px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:18px;
+}
+
+.card-title{
+    font-size:13px;
+    color:#666;
+}
+
+.card-result{
+    margin-top:4px;
+    font-size:20px;
+    font-weight:bold;
+}
+
 </style>
 </head>
+
 <body>
 
-<h2>Рандомайзер</h2>
-    <h1>ПРОСЛАВЛЕНИЕ</h1>
-<button onclick="generate()">Запустить 
-                                
-<svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18 2L21 5L18 8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6 22L3 19L6 16" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M21 5H10C6.13401 5 3 8.13401 3 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3 19H14C17.866 19 21 15.866 21 12" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-                            </button>
+<div class="title-small">Рандомайзер</div>
+<div class="title-big">ПРОСЛАВЛЕНИЕ</div>
 
-<div class="result">
-    <p><strong>Хвалебные:
-    </strong> <span id="praise">—</span></p>
-    <p><strong>На Вечерю:
-    </strong> <span id="supper">—</span></p>
-    <p><strong>Поклонение:
-    </strong> <span id="worship">—</span></p>
+<button onclick="generate()">
+
+Запустить
+
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+<path d="M18 2L21 5L18 8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M6 22L3 19L6 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M21 5H10C6.13 5 3 8.13 3 12" stroke="white" stroke-width="2"/>
+<path d="M3 19H14C17.86 19 21 15.86 21 12" stroke="white" stroke-width="2"/>
+</svg>
+
+</button>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-title">Хвалебные</div>
+<div class="card-result" id="praise">—</div>
+</div>
+
+<div class="card">
+<div class="card-title">О Кресте</div>
+<div class="card-result" id="supper">—</div>
+</div>
+
+<div class="card">
+<div class="card-title">На поклонение</div>
+<div class="card-result" id="worship">—</div>
+</div>
+
 </div>
 
 <script>
@@ -258,12 +316,6 @@ const worship = [
 "Через внешние дворы",
 "Я люблю Тебя, Иисус",
 "Я пойду за Тобой"
-
-const praise = [...]; 
-const supper = [...];
-const worship = [...];
-
-// === ОСНОВНАЯ ЛОГИКА ===
 
 function randomItem(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
